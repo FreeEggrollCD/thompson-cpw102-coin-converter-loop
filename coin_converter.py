@@ -33,3 +33,11 @@ while converting:
 
     if input('Convert more coins? (y/n) ').lower().strip() != 'y':
         converting = False
+
+while not is_negative:
+    num = int(input('Enter a number: '))
+    if num < 0:
+        is_negative = True
+    else:
+        sum_nums.append(num)
+print(sum(sum_nums))
