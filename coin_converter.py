@@ -9,27 +9,35 @@ CENTS_PER_DIME = 10    # a dime is 10 cents
 CENTS_PER_NICKEL = 5   # a nickel is 5 cents
 
 # The original program calculated the value of some coins.
+converting:bool = True
+is_negative:bool = False
+sum_nums:list = []
 
-# get input
-print('We will convert coins to cents.')
-quarters = int(input('How many quarters? '))
-dimes = int(input('How many dimes? '))
-nickels = int(input('How many nickels? '))
-pennies = int(input('How many pennies? '))
+while converting:
+    print('We will convert coins to cents.')
+    quarters = int(input('How many quarters? '))
+    dimes = int(input('How many dimes? '))
+    nickels = int(input('How many nickels? '))
+    pennies = int(input('How many pennies? '))
 
-# process the input,
-# calculate the total value, in cents,
-# of the coins input by the user.
-cents = CENTS_PER_QUARTER * quarters \
-      + CENTS_PER_DIME * dimes \
-      + CENTS_PER_NICKEL * nickels \
-      + pennies
+    cents = CENTS_PER_QUARTER * quarters \
+          + CENTS_PER_DIME * dimes \
+          + CENTS_PER_NICKEL * nickels \
+          + pennies
 
-# display the original coin quantities
-# and the calculated value.
-print( quarters, 'quarters',
-       dimes, 'dimes',
-       nickels, 'nickels',
-       pennies, 'pennies',
-       'is', cents, 'cents.')
+    print( quarters, 'quarters',
+           dimes, 'dimes',
+           nickels, 'nickels',
+           pennies, 'pennies',
+           'is', cents, 'cents.')
 
+    if input('Convert more coins? (y/n) ').lower().strip() != 'y':
+        converting = False
+
+while not is_negative:
+    num = int(input('Enter a number: '))
+    if num < 0:
+        is_negative = True
+    else:
+        sum_nums.append(num)
+print(sum(sum_nums))
